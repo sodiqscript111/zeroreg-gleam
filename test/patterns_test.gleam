@@ -7,59 +7,60 @@ pub fn main() {
 }
 
 pub fn email_pattern_test() {
-  let assert True = zeroreg.test(patterns.email(), "user@example.com")
-  let assert True = zeroreg.test(patterns.email(), "test.user+tag@domain.co.uk")
-  let assert False = zeroreg.test(patterns.email(), "@example.com")
+  let assert True = zeroreg.matches(patterns.email(), "user@example.com")
+  let assert True = zeroreg.matches(patterns.email(), "test.user+tag@domain.co.uk")
+  let assert False = zeroreg.matches(patterns.email(), "@example.com")
 }
 
 pub fn url_pattern_test() {
-  let assert True = zeroreg.test(patterns.url(), "https://example.com")
-  let assert False = zeroreg.test(patterns.url(), "ftp://example.com")
+  let assert True = zeroreg.matches(patterns.url(), "https://example.com")
+  let assert False = zeroreg.matches(patterns.url(), "ftp://example.com")
 }
 
 pub fn date_pattern_test() {
-  let assert True = zeroreg.test(patterns.date(), "2024-03-15")
-  let assert False = zeroreg.test(patterns.date(), "2024-13-01")
+  let assert True = zeroreg.matches(patterns.date(), "2024-03-15")
+  let assert False = zeroreg.matches(patterns.date(), "2024-13-01")
 }
 
 pub fn time_pattern_test() {
-  let assert True = zeroreg.test(patterns.time(), "14:30")
-  let assert False = zeroreg.test(patterns.time(), "25:00")
+  let assert True = zeroreg.matches(patterns.time(), "14:30")
+  let assert False = zeroreg.matches(patterns.time(), "25:00")
 }
 
 pub fn ipv4_pattern_test() {
-  let assert True = zeroreg.test(patterns.ipv4(), "192.168.1.1")
-  let assert False = zeroreg.test(patterns.ipv4(), "256.1.1.1")
+  let assert True = zeroreg.matches(patterns.ipv4(), "192.168.1.1")
+  let assert False = zeroreg.matches(patterns.ipv4(), "256.1.1.1")
 }
 
 pub fn uuid_pattern_test() {
-  let assert True = zeroreg.test(patterns.uuid(), "550e8400-e29b-41d4-a716-446655440000")
-  let assert False = zeroreg.test(patterns.uuid(), "not-a-uuid")
+  let assert True =
+    zeroreg.matches(patterns.uuid(), "550e8400-e29b-41d4-a716-446655440000")
+  let assert False = zeroreg.matches(patterns.uuid(), "not-a-uuid")
 }
 
 pub fn slug_pattern_test() {
-  let assert True = zeroreg.test(patterns.slug(), "my-awesome-post")
-  let assert False = zeroreg.test(patterns.slug(), "Hello-World")
+  let assert True = zeroreg.matches(patterns.slug(), "my-awesome-post")
+  let assert False = zeroreg.matches(patterns.slug(), "Hello-World")
 }
 
 pub fn hex_color_pattern_test() {
-  let assert True = zeroreg.test(patterns.hex_color(), "#ff5733")
-  let assert False = zeroreg.test(patterns.hex_color(), "#gggggg")
+  let assert True = zeroreg.matches(patterns.hex_color(), "#ff5733")
+  let assert False = zeroreg.matches(patterns.hex_color(), "#gggggg")
 }
 
 pub fn username_pattern_test() {
-  let assert True = zeroreg.test(patterns.username(), "cool_user42")
-  let assert False = zeroreg.test(patterns.username(), "ab")
+  let assert True = zeroreg.matches(patterns.username(), "cool_user42")
+  let assert False = zeroreg.matches(patterns.username(), "ab")
 }
 
 pub fn semver_pattern_test() {
-  let assert True = zeroreg.test(patterns.semver(), "2.1.3")
-  let assert False = zeroreg.test(patterns.semver(), "v1.0.0")
+  let assert True = zeroreg.matches(patterns.semver(), "2.1.3")
+  let assert False = zeroreg.matches(patterns.semver(), "v1.0.0")
 }
 
 pub fn mac_address_pattern_test() {
-  let assert True = zeroreg.test(patterns.mac_address(), "00:1A:2B:3C:4D:5E")
-  let assert False = zeroreg.test(patterns.mac_address(), "GG:HH:II:JJ:KK:LL")
+  let assert True = zeroreg.matches(patterns.mac_address(), "00:1A:2B:3C:4D:5E")
+  let assert False = zeroreg.matches(patterns.mac_address(), "GG:HH:II:JJ:KK:LL")
 }
 
 pub fn strong_password_test() {

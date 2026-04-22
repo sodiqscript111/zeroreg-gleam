@@ -87,14 +87,14 @@ pub fn mac_address() -> zeroreg.Pattern {
 
 pub fn strong_password(input: String) -> Bool {
   string_length_at_least(input, 8)
-    && zeroreg.test(zeroreg.new("[a-z]"), input)
-    && zeroreg.test(zeroreg.new("[A-Z]"), input)
-    && zeroreg.test(zeroreg.new("\\d"), input)
-    && zeroreg.test(zeroreg.new("[@$!%*?&]"), input)
+    && zeroreg.matches(zeroreg.new("[a-z]"), input)
+    && zeroreg.matches(zeroreg.new("[A-Z]"), input)
+    && zeroreg.matches(zeroreg.new("\\d"), input)
+    && zeroreg.matches(zeroreg.new("[@$!%*?&]"), input)
 }
 
 pub fn matches(pattern: zeroreg.Pattern, input: String) -> Bool {
-  zeroreg.test(pattern, input)
+  zeroreg.matches(pattern, input)
 }
 
 pub fn all() -> List(PatternInfo) {

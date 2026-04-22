@@ -89,7 +89,7 @@ pub fn or_str(pattern: Pattern, value: String) -> Pattern {
   new("(?:" <> source(pattern) <> "|" <> escape(value) <> ")")
 }
 
-pub fn test(pattern: Pattern, input: String) -> Bool {
+pub fn matches(pattern: Pattern, input: String) -> Bool {
   test_ffi(source(pattern), input)
 }
 
@@ -242,9 +242,9 @@ fn wrap(pattern: Pattern) -> String {
 }
 
 fn is_wrapped(value: String) -> Bool {
-  (string.starts_with(value, "(?:") && string.ends_with(value, ")"))
-    || (string.starts_with(value, "(") && string.ends_with(value, ")"))
-    || (string.starts_with(value, "[") && string.ends_with(value, "]"))
+  string.starts_with(value, "(?:") && string.ends_with(value, ")")
+    || string.starts_with(value, "(") && string.ends_with(value, ")")
+    || string.starts_with(value, "[") && string.ends_with(value, "]")
     || string.starts_with(value, "\\")
 }
 

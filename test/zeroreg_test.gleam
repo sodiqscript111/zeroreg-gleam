@@ -34,10 +34,10 @@ pub fn quantifier_test() {
     |> zeroreg.then(zeroreg.digit(0) |> zeroreg.between(2, 4))
     |> zeroreg.then(zeroreg.end_of_line())
 
-  let assert True = zeroreg.test(pattern, "12")
-  let assert True = zeroreg.test(pattern, "1234")
-  let assert False = zeroreg.test(pattern, "1")
-  let assert False = zeroreg.test(pattern, "12345")
+  let assert True = zeroreg.matches(pattern, "12")
+  let assert True = zeroreg.matches(pattern, "1234")
+  let assert False = zeroreg.matches(pattern, "1")
+  let assert False = zeroreg.matches(pattern, "12345")
 }
 
 pub fn optional_test() {
@@ -47,9 +47,9 @@ pub fn optional_test() {
     |> zeroreg.then(zeroreg.digit(3))
     |> zeroreg.then(zeroreg.end_of_line())
 
-  let assert True = zeroreg.test(pattern, "123")
-  let assert True = zeroreg.test(pattern, "+123")
-  let assert False = zeroreg.test(pattern, "++123")
+  let assert True = zeroreg.matches(pattern, "123")
+  let assert True = zeroreg.matches(pattern, "+123")
+  let assert False = zeroreg.matches(pattern, "++123")
 }
 
 pub fn match_test() {
@@ -72,9 +72,9 @@ pub fn one_of_test() {
   let pattern =
     zeroreg.one_of([zeroreg.literal("cat"), zeroreg.literal("dog"), zeroreg.literal("bird")])
 
-  let assert True = zeroreg.test(pattern, "cat")
-  let assert True = zeroreg.test(pattern, "bird")
-  let assert False = zeroreg.test(pattern, "fish")
+  let assert True = zeroreg.matches(pattern, "cat")
+  let assert True = zeroreg.matches(pattern, "bird")
+  let assert False = zeroreg.matches(pattern, "fish")
 }
 
 pub fn phone_builder_test() {
@@ -86,8 +86,8 @@ pub fn phone_builder_test() {
     |> zeroreg.then_str("-")
     |> zeroreg.then(zeroreg.digit(4))
 
-  let assert True = zeroreg.test(phone, "+123-456-7890")
-  let assert True = zeroreg.test(phone, "123-456-7890")
+  let assert True = zeroreg.matches(phone, "+123-456-7890")
+  let assert True = zeroreg.matches(phone, "123-456-7890")
 }
 
 fn list_length(values: List(a)) -> Int {
