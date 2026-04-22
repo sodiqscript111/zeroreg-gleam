@@ -1,0 +1,11 @@
+name = "zeroreg"
+version = "0.1.0"
+description = "A human-readable regex builder for Gleam"
+target = "erlang"
+licenses = ["MIT"]
+
+[dependencies]
+gleam_stdlib = ">= 0.44.0 and < 2.0.0"
+
+[dev-dependencies]
+gleeunit = ">= 1.0.0 and < 2.0.0"
